@@ -97,7 +97,7 @@ function obj(){
 Таких приборов должно быть как минимум два (например, настольная лампа и компьютер). Выбрав прибор, подумайте, какими свойствами он обладает.
 
 ## Device object making
-В объекте __Device__ в качестве параметров мы будем принимать имя, цену, цвет, а также цену за включённый прибор. С помощью `this` мы определяем свойства объекта __Device__, при создании нового экземпляра (девайса). This указывает на текущий экземпляр объекта.
+В объекте __Device__ в качестве параметров мы будем принимать имя, цену, цвет, а также цену за включённый прибор. С помощью `this` мы определяем свойства объекта __Device__, при создании нового экземпляра (девайса). `This` указывает на текущий экземпляр объекта.
 ```
 function Device(name, price, color, powerOnPrice){
     this.name = name; // device name
@@ -171,3 +171,95 @@ Device.prototype.turnOff = function (){
     }
 }
 ```
+
+
+# Exercise  5
+Переписать консольное приложение из предыдущего задания на классы.
+
+## class and turnOn - turnOff functions
+Создаём класс с именем __Device__ и в самом начале по синтаксису передаем параметры в конструктор. Затем создаём функции выключения и включения приборов.
+```
+class Device {
+    constructor(name,price,color,powerOnPrice) {
+        this.name = name;
+        this.price = price;
+        this.color = color;
+        this.powerOnPrice = powerOnPrice;
+        this.poweredOn = false;
+    }
+
+    turnOn() {
+        if(this.poweredOn === true){
+            console.log(`${this.name} is already turn on`);
+        } else{
+            console.log(`${this.name} is turn on`);
+            this.poweredOn = true;
+        }
+    }
+    
+    turnOff() {
+        if(this.poweredOn === false){
+            console.log(`${this.name} is already turn off`);
+        } else{
+            console.log(`${this.name} is turn off`);
+            this.poweredOn = false;
+        }
+    }
+}
+```
+
+## Vars creating, find powerOn sum and functions turn on + turn of checking
+Создаём новые экземпляры (приборы) для класса __Device__. Затем высчитываем цену за 2 включенных прибора и проверяем класс __Device__ на работоспособность.
+```
+class Device {
+    constructor(name,price,color,powerOnPrice) {
+        this.name = name;
+        this.price = price;
+        this.color = color;
+        this.powerOnPrice = powerOnPrice;
+        this.poweredOn = false;
+    }
+
+    turnOn() {
+        if(this.poweredOn === true){
+            console.log(`${this.name} is already turn on`);
+        } else{
+            console.log(`${this.name} is turn on`);
+            this.poweredOn = true;
+        }
+    }
+    
+    turnOff() {
+        if(this.poweredOn === false){
+            console.log(`${this.name} is already turn off`);
+        } else{
+            console.log(`${this.name} is turn off`);
+            this.poweredOn = false;
+        }
+    }
+}
+
+// devices
+const lamp = new Device('Lamp', 50, 'white', 300);
+const pc = new Device('PC', 200, 'black', 500);
+
+// power on summary
+const powerOnPriceSum = lamp.powerOnPrice + pc.powerOnPrice;
+console.log(`Power on sum = ${powerOnPriceSum}`); // Power on sum = 800
+
+// lamp area
+lamp.turnOn(); // Lamp is turn on.
+lamp.turnOn(); // Lamp is already turn on.
+lamp.turnOff(); // Lamp is turn off.
+lamp.turnOff(); // Lamp is already turn off.
+
+// pc area
+pc.turnOn(); // PC is turn on. 
+pc.turnOn(); // PC is already turn on.
+pc.turnOff(); // PC is turn off.
+pc.turnOff(); // PC is already turn off.
+```
+
+## Conclusion
+В заключении могу сказать, что понял смысл ООП в программировании, также получил опыт работы с классами, прототипами, объектами. Эта тема была самая трудная по моему мнению, потому что после пройденного материала я так и не понимал зачем прототипы, но посмотрев дополнительные видео на YouTube до меня дошло и начал писать сам.
+__Спасибо за внимание!__
