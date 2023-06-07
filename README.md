@@ -76,19 +76,19 @@ check('name', myObject) // true
 ## function making
 Создаём функцию в которой будем создавать объект.
 ```
-function obj(){
+(function obj(){
     // code
-}
+})()
 ```
 
 ## object making
-Внутри функции мы создаём объект setObj, затем удаляем у объекта метод __proto__. Выводим результат в консоль.
+Внутри функции мы создаём объект setObj, затем удаляем у объекта метод __prototype__. Выводим результат в консоль.
 ```
-function obj(){
-    const setObj = new Set();
-    setObj.delete(__proto__);
-    console.log(setObj);
-}
+(function obj(){
+    let newObj = Object.create(null);
+    newObj.prototype = null
+    console.log(newObj);
+})()
 ```
 
 # Exercise  4
